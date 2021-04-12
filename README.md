@@ -9,7 +9,7 @@ To run this project a bit of steup is required:
 $ git clone git@github.com:bjoernpl/ThesisFiles.git
 $ cd ThesisFiles
 ```
-2. Clone ESPnet fork from [here](git@github.com:bjoernpl/espnet.git)
+2. Clone ESPnet fork from [here](https://github.com/bjoernpl/espnet)
 ```bash
 $ git clone git@github.com:bjoernpl/espnet.git
 $ cd espnet
@@ -23,7 +23,7 @@ $ cd ParallelWaveGAN
 $ pip install -e .
 $ cd ..
 ```
-3. Install FaceNet fork from [here](git@github.com:bjoernpl/facenet-pytorch.git)
+3. Install FaceNet fork from [here](https://github.com/bjoernpl/facenet-pytorch)
 ```bash
 $ git clone git@github.com:bjoernpl/facenet-pytorch.git facenet_pytorch
 ```
