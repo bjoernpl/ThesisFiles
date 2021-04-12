@@ -4,6 +4,8 @@ from pathlib import Path
 import numpy as np
 import pytorch_lightning as pl
 import yaml
+from facenet_pytorch.models.inception_resnet_v1 import InceptionResnetV1
+from facenet_pytorch.models.mtcnn import fixed_image_standardization
 from torch.utils.data import DataLoader, SubsetRandomSampler
 from torchvision import datasets, transforms
 from yaml import Loader
@@ -12,8 +14,6 @@ from loaders.FaceStyleDataset import FaceStyleDataset
 from loaders.FaceStyleLoader import FaceStyleLoader
 from models.facenet import FaceNet
 from models.facevoice import FaceVoice
-from models.inception_resnet_v1 import InceptionResnetV1
-from models.mtcnn import fixed_image_standardization
 
 
 def main(params):
@@ -57,7 +57,7 @@ def main(params):
     n_classes = len(train_dataset.class_to_idx)
     facenet_model = InceptionResnetV1(pretrained=params["pretrained_facenet"], classify=True, num_classes=n_classes)
     facenet_pl = FaceNet(facenet_model, params["learning_rate"], params["lr_decay"])
-    
+
     # set freeze parameters
     if "include_layers" in params:
         include = params["include_layers"]

@@ -57,7 +57,7 @@ class FaceStyleInference():
     def load_image(self, path):
         img = Image.open(path)
         width, height = img.size
-        if width > 160:
+        if (width, height) != (160, 160):
             return self.mtcnn(img).cuda()
         else:
             return self.image_transform(img).cuda()

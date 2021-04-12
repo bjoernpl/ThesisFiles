@@ -1,13 +1,15 @@
-import yaml
-from yaml import Loader
 import os
-from models.inception_resnet_v1 import InceptionResnetV1
-from models.facevoice import FaceVoice
-from models.facenet import FaceNet
-from loaders.FaceStyleLoader import FaceStyleLoader
-from loaders.FaceStyleDataset import FaceStyleDataset
-import pytorch_lightning as pl
 from pathlib import Path
+
+import pytorch_lightning as pl
+import yaml
+from facenet_pytorch.models.inception_resnet_v1 import InceptionResnetV1
+from yaml import Loader
+
+from loaders.FaceStyleDataset import FaceStyleDataset
+from loaders.FaceStyleLoader import FaceStyleLoader
+from models.facenet import FaceNet
+from models.facevoice import FaceVoice
 
 
 def main(params):
