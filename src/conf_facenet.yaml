@@ -1,0 +1,8 @@
+wandb_project: Facenet_Finetuning
+batch_size: 256
+data_root: "/mnt/oldc/Users/Björn/Documents/MiscCode/face_voice_training/data/images"
+#include_layers: ["last_linear.weight", "next_linear.weight", "last_bn.weight", "last_bn.bias"]
+learning_rate: 0.001
+lr_decay: 0.1
+max_epochs: 15
+pretrained_facenet: "casia-webface"

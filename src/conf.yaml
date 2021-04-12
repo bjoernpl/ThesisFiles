@@ -1,0 +1,9 @@
+wandb_project: Face2Style
+batch_size: 256
+data_root: "/mnt/oldc/Users/Björn/Documents/MiscCode/face_voice_training/data"
+include_layers: ["model.last_linear.weight", "model.next_linear.weight", "model.last_bn.weight", "model.last_bn.bias"]
+learning_rate: 0.001
+lr_decay: 0.1
+max_epochs: 5
+pretrained_facenet: "casia-webface"
+finetuned_facenet_path: "results/facenet/spring-glitter-9/facestyle-epoch=14-val_loss=0.07.ckpt"
