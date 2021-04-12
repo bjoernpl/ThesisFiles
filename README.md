@@ -1,4 +1,5 @@
-# Files for Thesis: ``Target Speaker Text-to-Speech Synthesis from a Face Image Reference using Global Style Token Embedding``
+# "_Target Speaker Text-to-Speech Synthesis from a Face Image Reference using Global Style Token Embedding_"
+## Training, Inference and Data Preparation Code
 
 This repository contains the Notebooks used for data preparation and visualization. It also contains the code for training FaceNet and finetuning on style embeddings.
 
