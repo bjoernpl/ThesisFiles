@@ -9,15 +9,13 @@ To run this project a bit of steup is required:
 $ git clone git@github.com:bjoernpl/ThesisFiles.git
 $ cd ThesisFiles
 ```
-2. Clone ESPnet fork from [here](https://github.com/bjoernpl/espnet)
+2. Install ESPnet fork from [here](https://github.com/bjoernpl/espnet)
 ```bash
-$ git clone git@github.com:bjoernpl/espnet.git
-$ cd espnet
-$ pip install -e .
-$ cd ../src
+$ pip install git+https://github.com/bjoernpl/espnet
 ```
 2. Install [ParallelWaveGAN](https://github.com/kan-bayashi/ParallelWaveGAN)
 ```bash
+$ cd src
 $ git clone https://github.com/kan-bayashi/ParallelWaveGAN.git
 $ cd ParallelWaveGAN
 $ pip install -e .
