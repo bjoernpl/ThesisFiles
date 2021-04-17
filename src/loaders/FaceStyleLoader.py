@@ -5,7 +5,7 @@ import os
 import torch
 from pathlib import Path
 from loaders.FaceStyleDataset import FaceStyleDataset
-from models.mtcnn import fixed_image_standardization
+from facenet_pytorch.models.mtcnn import fixed_image_standardization
 import numpy as np
 
 class FaceStyleLoader(pl.LightningDataModule):

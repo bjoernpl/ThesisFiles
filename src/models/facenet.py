@@ -2,7 +2,6 @@ import pytorch_lightning as pl
 import torch.nn.functional as F
 from torch.optim import Adam
 from torch.optim.lr_scheduler import MultiStepLR
-from loss.focal_loss import FocalLoss
 
 class FaceNet(pl.LightningModule):
 
@@ -11,7 +10,6 @@ class FaceNet(pl.LightningModule):
         self.model = model
         self.learning_rate = learning_rate
         self.lr_decay = lr_decay
-        self.fl = FocalLoss()
 
     def forward(self, x):
         return self.model(x)
@@ -29,7 +27,7 @@ class FaceNet(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         x, y = batch
         y_pred = self(x)
-        loss = self.fl(y_pred, y)
+        loss = F.mse_loss(y_pred, y)
 
         self.log('val_loss', loss, on_epoch=True, prog_bar=True, logger=True)
         return loss

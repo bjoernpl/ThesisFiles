@@ -1,21 +1,23 @@
-import yaml
-from yaml import Loader
 import os
-from models.inception_resnet_v1 import InceptionResnetV1
-from models.facevoice import FaceVoice
-from loaders.FaceStyleLoader import FaceStyleLoader
-from loaders.FaceStyleDataset import FaceStyleDataset
-from parallel_wavegan.utils import load_model, download_pretrained_model
-import pytorch_lightning as pl
 from pathlib import Path
-import torch
-from inference.tacotron_loader import TacotronLoader
-from torchvision import transforms
-from PIL import Image
+
 import numpy as np
-from models.mtcnn import fixed_image_standardization
-from models.facenet import FaceNet
+import pytorch_lightning as pl
+import torch
+import yaml
 from facenet_pytorch import MTCNN
+from facenet_pytorch.models.inception_resnet_v1 import InceptionResnetV1
+from facenet_pytorch.models.mtcnn import fixed_image_standardization
+from loaders.FaceStyleDataset import FaceStyleDataset
+from loaders.FaceStyleLoader import FaceStyleLoader
+from models.facenet import FaceNet
+from models.facevoice import FaceVoice
+from parallel_wavegan.utils import download_pretrained_model, load_model
+from PIL import Image
+from torchvision import transforms
+from yaml import Loader
+
+from inference.tacotron_loader import TacotronLoader
 
 
 class FaceStyleInference():
@@ -26,9 +28,10 @@ class FaceStyleInference():
         facenet_pretrained: str = "casia-webface",
         facenet_finetuned = None
         ):
-        face_model = InceptionResnetV1(pretrained=facenet_pretrained, num_classes=5089)
-        if facenet_finetuned is not None:
-            face_model = FaceNet.load_from_checkpoint(facenet_finetuned, model=face_model)
+        face_model = FaceNet(InceptionResnetV1(pretrained=facenet_pretrained, num_classes=5089))
+        # Hack to get the weight loading working correctly
+        face_model.model.logits.weight = torch.nn.parameter.Parameter(torch.zeros((5089,512)))
+        face_model.model.logits.bias = torch.nn.parameter.Parameter(torch.zeros((5089)))
         _ = face_model.eval()
         self.facestyle = FaceVoice.load_from_checkpoint(facevoice_model_path, model=face_model).cuda()
         _ = self.facestyle.eval()
