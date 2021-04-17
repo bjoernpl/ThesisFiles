@@ -2,7 +2,9 @@
 
 This repository contains the Notebooks used for data preparation and visualization for my thesis: "Target Speaker Text-to-Speech Synthesis from a Face Image Reference using Global Style Token Embedding". It also contains the code for training FaceNet and finetuning on style embeddings.
 
-To run this project a bit of setup is required:
+Please try our [demonstration]( https://colab.research.google.com/github/bjoernpl/ThesisFiles/blob/main/demo.ipynb) on Google Colab.
+
+To run this project locally, a bit of setup is required:
 1. Clone this repository
 ```bash
 $ git clone git@github.com:bjoernpl/ThesisFiles.git
